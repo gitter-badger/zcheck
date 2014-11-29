@@ -47,7 +47,7 @@ object ZCheckBuild extends Build{
   lazy val zcheckSharedJs    = zcheckModule.jsShared(zcheckSharedJvm).dependsOn(zcoreJs)
 
  // zCheck Core Module
- val coreModule = XModule(id = "zcheck_core",
+ val coreModule = XModule(id = "zcheck-core",
                           baseDir = "modules/zcore",
                           defaultSettings = publicationSettings ++ buildSettings ++ XScalaSettings)
 
