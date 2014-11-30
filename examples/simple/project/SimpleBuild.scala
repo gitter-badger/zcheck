@@ -16,16 +16,19 @@ object SimpleBuild extends Build {
     organization := "com.github.inthenow",
     scalaVersion := "2.11.4",
     crossScalaVersions := Seq("2.11.4", "2.10.4"),
-    scalacOptions ++= Seq("-deprecation", "-unchecked")
+    scalacOptions ++= Seq("-deprecation", "-unchecked"),
+    resolvers += Resolver.url("inthenow-releases",
+    url("http://dl.bintray.com/inthenow/releases"))(Resolver.ivyStylePatterns)
+
   )
 
  val jsSettings = Seq(
-  libraryDependencies += "com.github.inthenow" %%% "zcheck" % "0.5.0",
+  libraryDependencies += "com.github.inthenow" %%% "zcheck" % "0.5.1",
     ScalaJSKeys.scalaJSTestFramework := "org.scalacheck.ScalaCheckFramework"
   )
 
   val jvmSettings = Seq(
-    libraryDependencies += "com.github.inthenow" %% "zcheck" % "0.5.0",
+    libraryDependencies += "com.github.inthenow" %% "zcheck" % "0.5.1",
     testOptions in Test += Tests.Argument(TestFrameworks.ScalaCheck, "-maxSize", "5", "-minSuccessfulTests", "33", "-workers", "1", "-verbosity", "1")
   )
 
