@@ -21,13 +21,13 @@ object ZCheckBuild extends Build{
 
   val jsSettings = Seq(
     libraryDependencies += "com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.0-4",
-    libraryDependencies += "org.scalacheck" %%% "scalacheck" % "1.12.2-SNAPSHOT", // % "test",
+    libraryDependencies += "org.scalacheck" %%% "scalacheck" % "1.12.1-SNAPSHOT", // % "test",
     ScalaJSKeys.scalaJSTestFramework := "org.scalacheck.ScalaCheckFramework"
   )
 
   val jvmSettings = Seq(
     libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.1.0",
-    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.2-SNAPSHOT", //% "test",
+    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.1-SNAPSHOT", //% "test",
     testOptions in Test += Tests.Argument(TestFrameworks.ScalaCheck, "-maxSize", "5", "-minSuccessfulTests", "33", "-workers", "1", "-verbosity", "1")
   )
 
