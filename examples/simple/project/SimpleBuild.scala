@@ -26,14 +26,14 @@ object SimpleBuild extends Build {
   )
 
  val jsSettings = Seq(
-  libraryDependencies += "com.github.inthenow" %%% "zcheck" % "0.5.3-SNAPSHOT",
-   libraryDependencies += "org.scalacheck" %%% "scalacheck" % "1.12.1-SNAPSHOT" % "test",
+  libraryDependencies += "com.github.inthenow" %%% "zcheck" % "0.5.3",
+   libraryDependencies += "org.scalacheck" %%% "scalacheck" % "1.12.1" % "test",
    ScalaJSKeys.scalaJSTestFramework := "org.scalacheck.ScalaCheckFramework"
   )
 
   val jvmSettings = Seq(
-    libraryDependencies += "com.github.inthenow" %% "zcheck" % "0.5.3-SNAPSHOT",
-    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.1-SNAPSHOT" % "test",
+    libraryDependencies += "com.github.inthenow" %% "zcheck" % "0.5.3",
+    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.1" % "test",
     testOptions in Test += Tests.Argument(TestFrameworks.ScalaCheck, "-maxSize", "5", "-minSuccessfulTests", "33", "-workers", "1", "-verbosity", "1")
   )
 
