@@ -1,0 +1,4 @@
+#!/bin/bash
+#
+
+ curl https://saucelabs.com/rest/v1/InTheNow/js-tests  -X POST  -u InTheNow:9a04fdfd-1bf2-4cd2-b994-eedd2d078158  -H 'Content-Type: application/json'  --data '{ "platforms": [["Windows 7", "firefox", "27"], ["Linux", "googlechrome", ""]], "url": "http://johnsonusm.com:8020/nexus/service/local/repositories/releases/content/sauce/Tests/1/Tests-1.html", "framework": "custom"}'

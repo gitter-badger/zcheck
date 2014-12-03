@@ -1,7 +1,11 @@
 package zcheck
 
+//import scala.scalajs.js.annotation.{JSExport, JSExportDescendentObjects}
+
+//@JSExport
 object SpecLiteTests extends SpecLite {
 
+  //@JSExport
   def err(i: Int) = {
     if (i < 0) throw new Error else i
   }

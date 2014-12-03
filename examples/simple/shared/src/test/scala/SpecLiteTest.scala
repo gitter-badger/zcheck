@@ -1,6 +1,6 @@
-import zcheck.SpecLite
+import zcheck.Stubs
 
-object SpecLiteTests extends SpecLite {
+object SpecLiteTests extends Stubs {
 
   def err(i: Int) = {
     if (i < 0) throw new Error else i

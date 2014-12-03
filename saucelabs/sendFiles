@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+
+for i in *.js Test.html
+do
+    curl -u InTheNow:9a04fdfd-1bf2-4cd2-b994-eedd2d078158 -X POST -H "Content-Type: application/octet-stream" https://saucelabs.com/rest/v1/storage/InTheNow/$i?overwrite=true --data-binary $PWD/$i
+done

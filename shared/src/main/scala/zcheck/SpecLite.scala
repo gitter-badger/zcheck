@@ -1,3 +1,15 @@
+/**
+ * This file has been lifted from scalaz -https://github.com/scalaz/scalaz/blob/series/7.2.x/tests/src/test/scala/scalaz/SpecLite.scala
+ *
+ * All original copyrights/attributions/legalStuff from the original apply
+ *
+ * Reasons for lift:
+ *   - name is set by a macro so that it works with scalajs
+ *
+ * Other changes:
+ *   - wrapped "in" with a try/catch. Have to make sure that real exceptions are still handled
+ */
+
 package zcheck
 
 import scalaz._
@@ -6,6 +18,7 @@ import reflect.ClassTag
 
 import org.scalacheck._
 import org.scalacheck.Prop.Result
+import org.scalacheck.Prop.Exception
 import org.scalacheck.Gen.Parameters
 
 abstract class SpecLite extends Properties("") {
@@ -41,7 +54,11 @@ abstract class SpecLite extends Properties("") {
     }
     def ![A](a: => A)(implicit ev: (A) => Prop): Unit = in(a)
     def in[A](a: => A)(implicit ev: (A) => Prop): Unit = property(context + ":" + s) = new Prop {
-      def apply(prms: Parameters): Result = ev(a).apply(prms) // TODO sort out the laziness / implicit conversions properly
+      def apply(prms: Parameters): Result = {
+        try ev(a).apply(prms) catch {
+          case e: Throwable => Result(status = Exception(e))
+        }
+      } // TODO sort out the laziness / implicit conversions properly
     }
   }
 

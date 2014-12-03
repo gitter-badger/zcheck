@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# get stored files:
+
+curl -u InTheNow:9a04fdfd-1bf2-4cd2-b994-eedd2d078158 https://saucelabs.com/rest/v1/storage/InTheNow

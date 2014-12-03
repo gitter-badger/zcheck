@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Run tests in a browser</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<script type="text/javascript" src="http://johnsonusm.com:8020/nexus/service/local/repositories/releases/content/sauce/zcheck-test-fastopt.js/1/zcheck-test-fastopt.js-1.js"></script>
+<script>
+function runSuite() {
+
+  var paragraph = document.createElement("p");
+  var s = TheTestSuiteTestA().run();
+
+  paragraph.innerHTML =    s;
+  document.getElementById("test").appendChild(paragraph);
+}
+</script>
+
+<div id="test"> Test JSON: </div>
+
+<button type="button" onclick="runSuite()">Run Tests</button>
+
+<!--
+<script type="text/javascript" src="sauce-storage:zcheckcore_shared-test-fastopt.js"></script>
+<script type="text/javascript" src="sauce-storage:zcheckcore-test-fastopt.js"></script>
+
+<script type="text/javascript" src="sauce-storage:zcheck_shared-test-fastopt.js"></script>
+
+
+<script type="text/javascript" src="sauce-storage:zcheck-test-fastopt.js"></script>
+
+-->
+
+<script>
+var text = TheTestSuiteTestA().run();
+var obj = JSON.parse(text);
+window.global_test_results =obj;
+var paragraph = document.createElement("p");
+paragraph.innerHTML= "window.global_test_results = " + text;
+document.getElementById("test").appendChild(paragraph);
+</script>
+
+</body>
+</html>

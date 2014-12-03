@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+
+cp ../modules/zcore/.shared_js/target/js/scala-2.11/scalajs_managed/js/zcheckcore_shared-test-fastopt.js zcheckcore_shared-test-fastopt.js
+cp ../modules/zcore/js/target/js/scala-2.11/scalajs_managed/js/zcheckcore-test-fastopt.js zcheckcore-test-fastopt.js
+
+cp ../.shared_js/target/js/scala-2.11/scalajs_managed/js/zcheck_shared-test-fastopt.js zcheck_shared-test-fastopt.js
+
+cp ../js/target/js/scala-2.11/scalajs_managed/js/zcheck-test-fastopt.js zcheck-test-fastopt.js

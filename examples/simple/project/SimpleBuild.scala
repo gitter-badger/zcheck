@@ -1,4 +1,7 @@
 
+import sbt.Keys._
+import sbt.Keys._
+import sbt.Keys._
 import sbt._
 import sbt.Keys._
 import com.inthenow.sbt.scalajs._
@@ -18,17 +21,19 @@ object SimpleBuild extends Build {
     crossScalaVersions := Seq("2.11.4", "2.10.4"),
     scalacOptions ++= Seq("-deprecation", "-unchecked"),
     resolvers += Resolver.url("inthenow-releases",
-    url("http://dl.bintray.com/inthenow/releases"))(Resolver.ivyStylePatterns)
-
+    url("http://dl.bintray.com/inthenow/releases"))(Resolver.ivyStylePatterns),
+    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
   )
 
  val jsSettings = Seq(
-  libraryDependencies += "com.github.inthenow" %%% "zcheck" % "0.5.1",
-    ScalaJSKeys.scalaJSTestFramework := "org.scalacheck.ScalaCheckFramework"
+  libraryDependencies += "com.github.inthenow" %%% "zcheck" % "0.5.3-SNAPSHOT",
+   libraryDependencies += "org.scalacheck" %%% "scalacheck" % "1.12.1-SNAPSHOT" % "test",
+   ScalaJSKeys.scalaJSTestFramework := "org.scalacheck.ScalaCheckFramework"
   )
 
   val jvmSettings = Seq(
-    libraryDependencies += "com.github.inthenow" %% "zcheck" % "0.5.1",
+    libraryDependencies += "com.github.inthenow" %% "zcheck" % "0.5.3-SNAPSHOT",
+    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.1-SNAPSHOT" % "test",
     testOptions in Test += Tests.Argument(TestFrameworks.ScalaCheck, "-maxSize", "5", "-minSuccessfulTests", "33", "-workers", "1", "-verbosity", "1")
   )
 
