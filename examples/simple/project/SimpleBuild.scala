@@ -34,7 +34,7 @@ object SimpleBuild extends Build {
   val jvmSettings = Seq(
     libraryDependencies += "com.github.inthenow" %% "zcheck" % "0.5.3",
     libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.1" % "test",
-    testOptions in Test += Tests.Argument(TestFrameworks.ScalaCheck, "-maxSize", "5", "-minSuccessfulTests", "33", "-workers", "1", "-verbosity", "1")
+    testOptions in Test += Tests.Argument(TestFrameworks.ScalaCheck)
   )
 
   implicit val js: JsTarget = new JsTarget(settings = JsTarget.js.settings ++ jsSettings)

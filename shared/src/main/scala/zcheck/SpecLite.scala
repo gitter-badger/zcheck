@@ -25,29 +25,28 @@ abstract class SpecLite extends Properties("") {
 
   override val name:String =  className(this)
 
-  def checkAll(name: String, props: Properties) {
+  def checkAll(name: String, props: Properties) =
     for ((name2, prop) <- props.properties) yield {
       property(name + ":" + name2) = prop
     }
-  }
 
-  def checkAll(props: Properties) {
-    for ((name, prop) <- props.properties) yield {
-      property(name) = prop
-    }
-  }
 
-  class PropertyOps(props: Properties) {
+  def checkAll(props: Properties) = for ((name, prop) <- props.properties) yield  property(name) = prop
+
+  implicit class PropertyOps(props: Properties) {
     def withProp(propName: String, prop: Prop) = new Properties(props.name) {
       for {(name, p) <- props.properties} property(name) = p
       property(propName) = prop
     }
   }
 
-  implicit def enrichProperties(props: Properties) = new PropertyOps(props)
   private var context: String = ""
 
-  class StringOps(s: String) {
+  def check(x: => Boolean): Prop = x must_== true
+
+  def fail(msg: String): Nothing = throw new AssertionError(msg)
+
+  implicit class StringOps(s: String) {
     def should[A](a: => Any): Unit = {
       val saved = context
       context = s; try a finally context = saved
@@ -62,14 +61,7 @@ abstract class SpecLite extends Properties("") {
     }
   }
 
-  implicit def enrichString(s: String) = new StringOps(s)
-
-  def check(x: => Boolean): Prop = {
-    x must_==(true)
-  }
-
-  def fail(msg: String): Nothing = throw new AssertionError(msg)
-  class AnyOps[A](actual: => A) {
+  implicit class AnyOps[A](actual: => A) {
     def must_===(expected: A)(implicit show: Show[A], equal: Equal[A]): Unit = {
       val act = actual
       def test = Equal[A].equal(expected, act)
@@ -118,7 +110,6 @@ abstract class SpecLite extends Properties("") {
       }
     }
   }
-  implicit def enrichAny[A](actual: => A): AnyOps[A] = new AnyOps(actual)
 
   def prop[T, R](result: T => R)(implicit toProp: (=>R) => Prop, a: Arbitrary[T], s: Shrink[T]): Prop = check1(result)
   implicit def propToProp(p: => Prop): Prop = p
