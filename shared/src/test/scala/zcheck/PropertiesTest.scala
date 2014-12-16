@@ -28,8 +28,7 @@ object TheTestSuite extends SpecLite {
     PropertiesTest,
     SpecLiteTests))
 
-  case class SauceLabsResult(passed:Int, failed:Int) {
-  }
+  case class SauceLabsResult(passed:Int, failed:Int)
 
   //@JSExport
   def run():String = {
