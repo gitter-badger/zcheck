@@ -1,6 +1,8 @@
 zCheck
 =====
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/InTheNow/zcheck?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 zCheck is a small testing library that works for both Scala/ScalaJS and is based on ScalaCheck.
 
 To get started add the following to your sbt settings
